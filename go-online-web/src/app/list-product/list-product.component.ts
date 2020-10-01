@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryManagementService } from '../inventory-management.service';
 import { InventoryModel } from '../inventory-model';
-import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,19 +13,18 @@ export class ListProductComponent implements OnInit {
   inventories:InventoryModel[] = [];
   constructor(private inventoryService: InventoryManagementService, private route: Router) { }
 
-  inventoryChanged = new Subject<InventoryModel[]>();
   ngOnInit(): void {
-    this.inventoryService.getInventories().subscribe(inventories => {
-      let index = 0;
+ 
+    this.inventoryService.getInventoryList();
+    this.inventoryService.inventoryChanged.subscribe((inventories: InventoryModel[]) => {
+      console.log("Subscriobibgf");
+      var index = 0;
+      this.inventories = [];
       while(index < inventories.length){
         this.inventories.push(inventories[index]);
-        index += 1;
+        index += 1; 
       }
     });
-  }
-
-  setInventories(){
-    console.log("setting Inventories");
   }
 
   newProduct(){

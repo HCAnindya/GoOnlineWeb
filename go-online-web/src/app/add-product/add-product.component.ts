@@ -24,6 +24,5 @@ export class AddProductComponent implements OnInit {
 
   saveProduct() {
     this.inventoryService.saveProduct(new InventoryModel(this.productForm.value['name'], this.productForm.value['price']));
-    this.inventoryService.getInventories().subscribe();
   }
 }
