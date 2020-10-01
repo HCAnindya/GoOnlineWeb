@@ -15,6 +15,7 @@ export class AddProductComponent implements OnInit {
 
   productForm: FormGroup;
   ngOnInit(): void {
+    console.log("Inside new Form");
     this.productForm = new FormGroup({
       'name' : new FormControl(),
       'price' : new FormControl()
@@ -23,5 +24,6 @@ export class AddProductComponent implements OnInit {
 
   saveProduct() {
     this.inventoryService.saveProduct(new InventoryModel(this.productForm.value['name'], this.productForm.value['price']));
+    this.inventoryService.getInventories().subscribe();
   }
 }

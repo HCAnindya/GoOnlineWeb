@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success" (click)="newProduct()">New Product</button>
+    </div>  
+</div>
+
+<div class="row">
+    <div class="col-xs-5" style="padding-top: 5px;">
+        <a href="" class="list-group-item clearfix" *ngFor="let inventory of inventories">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ inventory.inventoryName }}</h4>
+                <p class="list-group-item-text">{{ inventory.inventoryPrice }}</p>
+            </div>
+            <span class="pull-right">
+                <img src="" alt="" class="img-resposive" style="max-height: 50px;">
+            </span>
+        </a>
+    </div>
+    <div class="col-xs-7 pull-right" style="padding-top: 5px;">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

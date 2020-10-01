@@ -8,13 +8,17 @@ import { InventoryModel } from './inventory-model';
 export class InventoryManagementService {
   
   constructor(private http: HttpClient) { }
-
-
+  
   saveProduct(inventory: InventoryModel) {
     console.log(inventory);
     this.http.post('http://192.168.0.100:8011/inventorymanagement-ms/inventorymanagement/inventory', inventory)
     .subscribe(response => {
       console.log(response);
     });
+  }
+
+  getInventories() {
+    console.log("Inside getInventories()");
+    return this.http.get<InventoryModel[]>('http://192.168.0.100:8011/inventorymanagement-ms/inventorymanagement/inventories');
   }
 }
